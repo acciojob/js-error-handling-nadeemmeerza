@@ -21,7 +21,7 @@ btn.addEventListener('click', (e)=>{
 try {
 	let op = ["+", "/", "*", "-"]
 	op.map(op=>{
-		if(exprarray[0] == op)
+		if(exprarray[0] == op || exprarray[exprarray.length-1] == op)
 		throw new OutOfRangeError("Expression should not start with invalid operator");
 	})
 	
