@@ -16,15 +16,22 @@ class InvalidExprError extends Error{
 let btn = document.getElementById("btn");
 
 btn.addEventListener('click', (e)=>{
-	let input = document.getElementById("input").value;
+	let input = document.getElementById("input1").value;
 	let exprarray = input.split("");
 try {
-	if(!(exprarray[0] >= '0' && exprarray[0] <= '9'))
+	let op = ["+", "/", "*", "-"]
+	op.map(op=>{
+		if(exprarray[0] == op)
 		throw new OutOfRangeError("Expression should not start with invalid operator");
+	})
+	
+	
+	if(exprarray.includes("a"))
+		throw new InvalidExprError("Expression should only consist of integers and +-/* characters and not ");
 	document.write(eval(input));
 	
-} catch (OutOfRangeError) {
-	document.write(OutOfRangeError.message);
+} catch (Error) {
+	document.write(Error.message);
 }
 
 
